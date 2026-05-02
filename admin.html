@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Admin Kansah</title>
+<style>
+body {font-family: Arial;}
+</style>
+</head>
+<body>
+
+<h1>Admin Panel</h1>
+
+<p>Harga ML 86 Diamond:</p>
+<input id="harga" value="20000">
+<button onclick="save()">Simpan</button>
+
+<script>
+function save(){
+    let harga = document.getElementById("harga").value;
+    localStorage.setItem("harga_ml86", harga);
+    alert("Tersimpan!");
+}
+</script>
+
+</body>
+</html>
