@@ -6,22 +6,211 @@
 <title>Kansah Games</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0;font-family:Arial,sans-serif}
-body{background:#070b16;color:white}
-.topbar{background:#020617;text-align:center;padding:9px;font-size:13px;color:#cbd5e1}
-.hero{padding:34px 18px;background:radial-gradient(circle at top right,#1d4ed8,#020617 55%);text-align:center}
-.logo{font-size:18px;color:#facc15;font-weight:bold;letter-spacing:2px}
-.hero h1{font-size:38px;margin:8px 0}
-.hero p{color:#cbd5e1;font-size:16px}
-.hero-badge{display:inline-block;margin-top:15px;background:#facc15;color:#111827;padding:9px 14px;border-radius:999px;font-weight:bold}
-.wrap{padding:16px;max-width:900px;margin:auto}
-.panel{background:#111827;border:1px solid #253044;border-radius:20px;padding:18px;margin-bottom:16px;box-shadow:0 10px 25px rgba(0,0,0,.25)}
-.panel-title{font-size:20px;font-weight:bold;margin-bottom:12px}
-.input-row{display:flex;gap:10px}
+*{box-sizing:border-box;margin:0;padding:0;font-family:Arial}
+body{background:#0f172a;color:white}
+
+/* HEADER */
+.header{
+  text-align:center;
+  padding:30px 15px;
+  background:linear-gradient(135deg,#020617,#1e3a8a);
+}
+.header h1{font-size:28px}
+.header p{color:#cbd5e1;font-size:14px}
+
+/* BOX */
+.box{
+  background:#1e293b;
+  margin:15px;
+  padding:15px;
+  border-radius:15px;
+}
+
+/* INPUT */
+.row{display:flex;gap:10px}
 #idgame{flex:2}
 #server{flex:1}
-input{width:100%;border:none;outline:none;border-radius:14px;padding:14px;font-size:15px}
-.note{font-size:12px;color:#94a3b8;margin-top:8px}
-.search{margin-bottom:14px}
-.tabs{display:flex;gap:10px;overflow-x:auto;padding-bottom:10px;margin-bottom:14px}
-.tabs button{white-space:nowrap;border:none;border-radius:999px
+input{
+  width:100%;
+  padding:12px;
+  border:none;
+  border-radius:10px;
+}
+
+/* GAME */
+.games{
+  display:flex;
+  gap:10px;
+  padding:0 15px;
+}
+.games button{
+  flex:1;
+  padding:10px;
+  border:none;
+  border-radius:10px;
+  background:#334155;
+  color:white;
+}
+.games .active{background:#22c55e}
+
+/* GRID */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+  padding:15px;
+}
+.card{
+  background:#1e293b;
+  padding:12px;
+  border-radius:12px;
+  text-align:center;
+}
+.price{
+  color:#22c55e;
+  margin:8px 0;
+  font-weight:bold;
+}
+.buy{
+  background:#22c55e;
+  border:none;
+  padding:10px;
+  border-radius:10px;
+  width:100%;
+  color:white;
+}
+
+/* FOOTER */
+.footer{
+  text-align:center;
+  padding:15px;
+  color:#94a3b8;
+}
+
+/* WA */
+.wa{
+  position:fixed;
+  right:15px;
+  bottom:15px;
+  background:#22c55e;
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+/* TOAST */
+.toast{
+  position:fixed;
+  bottom:70px;
+  left:50%;
+  transform:translateX(-50%);
+  background:#334155;
+  padding:10px 15px;
+  border-radius:10px;
+  display:none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+<h1>Kansah Games</h1>
+<p>Topup cepat & terpercaya</p>
+</div>
+
+<div class="box">
+<b>Masukkan ID Game</b>
+<div class="row">
+<input id="idgame" placeholder="ID Game">
+<input id="server" placeholder="Server">
+</div>
+</div>
+
+<div class="games">
+<button class="active" onclick="setGame('MLBB',this)">MLBB</button>
+<button onclick="setGame('Free Fire',this)">FF</button>
+<button onclick="setGame('PUBG',this)">PUBG</button>
+<button onclick="setGame('Magic Chess',this)">Magic</button>
+</div>
+
+<div id="products" class="grid"></div>
+
+<div class="footer">
+✔ Aman ✔ Cepat ✔ Support WA
+</div>
+
+<div class="wa" onclick="chat()">💬</div>
+<div id="toast" class="toast"></div>
+
+<script>
+const WA="601162456609";
+let currentGame="MLBB";
+
+const data={
+"MLBB":[["86 DM",20000],["172 DM",40000],["257 DM",60000],["344 DM",80000]],
+"Free Fire":[["70 DM",10000],["140 DM",20000],["355 DM",50000]],
+"PUBG":[["60 UC",15000],["325 UC",75000]],
+"Magic Chess":[["50 DM",10000],["150 DM",30000],["500 DM",100000]]
+};
+
+function toast(msg){
+let t=document.getElementById("toast");
+t.innerText=msg;
+t.style.display="block";
+setTimeout(()=>t.style.display="none",2000);
+}
+
+function setGame(game,btn){
+currentGame=game;
+document.querySelectorAll(".games button").forEach(b=>b.classList.remove("active"));
+btn.classList.add("active");
+render();
+}
+
+function render(){
+let box=document.getElementById("products");
+box.innerHTML="";
+data[currentGame].forEach(p=>{
+box.innerHTML+=`
+<div class="card">
+<h3>${p[0]}</h3>
+<div class="price">Rp${p[1].toLocaleString()}</div>
+<button class="buy" onclick="order('${p[0]}',${p[1]})">Beli</button>
+</div>`;
+});
+}
+
+function order(name,price){
+const id=document.getElementById("idgame").value.trim();
+const server=document.getElementById("server").value.trim();
+
+if(!id){
+toast("Isi ID dulu");
+return;
+}
+
+let msg=`Halo Admin Kansah Games
+Saya mau order:
+
+Game: ${currentGame}
+Produk: ${name}
+Harga: Rp${price}
+ID: ${id}
+Server: ${server}`;
+
+window.location.href="https://wa.me/"+WA+"?text="+encodeURIComponent(msg);
+}
+
+function chat(){
+window.location.href="https://wa.me/"+WA;
+}
+
+render();
+</script>
+
+</body>
+</html>
