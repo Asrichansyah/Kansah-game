@@ -1,35 +1,136 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kansah Games</title>
-<style>
-body {font-family: Arial; background:#0f172a; color:white; text-align:center;}
-.card {background:#1e293b; padding:20px; margin:10px; border-radius:10px;}
-button {padding:10px 20px; background:#22c55e; border:none; color:white; border-radius:5px;}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kansah Games</title>
+  <style>
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:Arial,sans-serif;
+      background:#0f172a;
+      color:white;
+    }
+    header{
+      text-align:center;
+      padding:35px 15px;
+      background:linear-gradient(135deg,#111827,#1e3a8a);
+    }
+    header h1{font-size:42px;margin:0}
+    header p{font-size:18px;color:#cbd5e1}
+    .container{padding:20px;max-width:1000px;margin:auto}
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:18px;
+    }
+    .card{
+      background:#1e293b;
+      padding:22px;
+      border-radius:18px;
+      box-shadow:0 8px 20px rgba(0,0,0,.25);
+      text-align:center;
+    }
+    .card h2{margin:0 0 10px}
+    .price{font-size:22px;font-weight:bold;color:#38bdf8}
+    button{
+      margin-top:15px;
+      padding:12px 22px;
+      border:none;
+      border-radius:10px;
+      background:#22c55e;
+      color:white;
+      font-size:16px;
+      font-weight:bold;
+      cursor:pointer;
+    }
+    button:hover{background:#16a34a}
+    .note{
+      margin-top:25px;
+      background:#020617;
+      padding:18px;
+      border-radius:14px;
+      color:#cbd5e1;
+      text-align:center;
+    }
+    footer{
+      text-align:center;
+      padding:25px;
+      color:#94a3b8;
+    }
+  </style>
 </head>
 <body>
 
-<h1>Kansah Games</h1>
-<p>Topup Game Murah & Otomatis</p>
+<header>
+  <h1>Kansah Games</h1>
+  <p>Topup Game Murah, Cepat & Aman</p>
+</header>
 
-<div class="card">
-<h2>MLBB Diamond</h2>
-<p>86 Diamond - Rp20.000</p>
-<button onclick="order('ML 86 Diamond',20000)">Beli</button>
+<div class="container">
+  <div class="grid">
+
+    <div class="card">
+      <h2>MLBB Diamond</h2>
+      <p>86 Diamond</p>
+      <div class="price">Rp20.000</div>
+      <button onclick="order('MLBB 86 Diamond','20000')">Beli Sekarang</button>
+    </div>
+
+    <div class="card">
+      <h2>MLBB Diamond</h2>
+      <p>172 Diamond</p>
+      <div class="price">Rp40.000</div>
+      <button onclick="order('MLBB 172 Diamond','40000')">Beli Sekarang</button>
+    </div>
+
+    <div class="card">
+      <h2>Free Fire</h2>
+      <p>70 Diamond</p>
+      <div class="price">Rp10.000</div>
+      <button onclick="order('Free Fire 70 Diamond','10000')">Beli Sekarang</button>
+    </div>
+
+    <div class="card">
+      <h2>PUBG Mobile</h2>
+      <p>60 UC</p>
+      <div class="price">Rp15.000</div>
+      <button onclick="order('PUBG Mobile 60 UC','15000')">Beli Sekarang</button>
+    </div>
+
+  </div>
+
+  <div class="note">
+    <b>Cara Order:</b><br>
+    Pilih produk → isi ID game/server → lanjut WhatsApp → admin proses pesanan.
+  </div>
 </div>
 
+<footer>
+  © 2026 Kansah Games • Topup Aman & Terpercaya
+</footer>
+
 <script>
-function order(nama,harga){
-    let id = prompt("Masukkan ID Game:");
-    let server = prompt("Masukkan Server:");
+function order(nama, harga){
+  let id = prompt("Masukkan ID Game:");
+  if(!id) return;
 
-    let pesan = `Halo, saya mau order\nProduk: ${nama}\nHarga: Rp${harga}\nID: ${id} (${server})`;
+  let server = prompt("Masukkan Server / Zona jika ada:");
+  if(server === null) return;
 
-    let wa = "https://wa.me/6281234567890?text=" + encodeURIComponent(pesan);
-    window.location.href = wa;
+  let pesan =
+`Halo Admin Kansah Games, saya mau order:
+
+Produk: ${nama}
+Harga: Rp${harga}
+ID Game: ${id}
+Server/Zona: ${server}
+
+Mohon diproses ya.`;
+
+  let wa = "https://wa.me/6281262409473?text=" + encodeURIComponent(pesan);
+  window.location.href = wa;
 }
 </script>
 
