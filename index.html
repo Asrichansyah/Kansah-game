@@ -1,125 +1,309 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kansah Games</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kansah Games - Topup Game Murah</title>
+
   <style>
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family:Arial,sans-serif;
-      background:#0f172a;
-      color:white;
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
     }
-    header{
-      text-align:center;
-      padding:35px 15px;
-      background:linear-gradient(135deg,#111827,#1e3a8a);
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: white;
     }
-    header h1{font-size:42px;margin:0}
-    header p{font-size:18px;color:#cbd5e1}
-    .container{padding:20px;max-width:1000px;margin:auto}
-    .grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-      gap:18px;
+
+    header {
+      padding: 35px 18px;
+      text-align: center;
+      background: linear-gradient(135deg, #020617, #1e3a8a);
     }
-    .card{
-      background:#1e293b;
-      padding:22px;
-      border-radius:18px;
-      box-shadow:0 8px 20px rgba(0,0,0,.25);
-      text-align:center;
+
+    header h1 {
+      font-size: 42px;
+      margin: 0;
     }
-    .card h2{margin:0 0 10px}
-    .price{font-size:22px;font-weight:bold;color:#38bdf8}
-    button{
-      margin-top:15px;
-      padding:12px 22px;
-      border:none;
-      border-radius:10px;
-      background:#22c55e;
-      color:white;
-      font-size:16px;
-      font-weight:bold;
-      cursor:pointer;
+
+    header p {
+      color: #cbd5e1;
+      font-size: 18px;
     }
-    button:hover{background:#16a34a}
-    .note{
-      margin-top:25px;
-      background:#020617;
-      padding:18px;
-      border-radius:14px;
-      color:#cbd5e1;
-      text-align:center;
+
+    .wa-btn {
+      display: inline-block;
+      margin-top: 12px;
+      background: #22c55e;
+      color: white;
+      padding: 12px 22px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: bold;
     }
-    footer{
-      text-align:center;
-      padding:25px;
-      color:#94a3b8;
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 22px;
+    }
+
+    .section-title {
+      font-size: 26px;
+      margin: 30px 0 16px;
+      text-align: center;
+    }
+
+    .trust {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .trust-box {
+      background: #1e293b;
+      padding: 16px;
+      border-radius: 16px;
+      text-align: center;
+      color: #cbd5e1;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 20px 0;
+    }
+
+    .tabs button {
+      background: #1e293b;
+      color: white;
+      border: 1px solid #334155;
+      padding: 10px 16px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .tabs button.active {
+      background: #2563eb;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: #1e293b;
+      padding: 22px;
+      border-radius: 18px;
+      text-align: center;
+      box-shadow: 0 8px 20px rgba(0,0,0,.25);
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 25px rgba(0,0,0,.4);
+    }
+
+    .card h3 {
+      margin: 0 0 8px;
+      font-size: 22px;
+    }
+
+    .card p {
+      color: #cbd5e1;
+    }
+
+    .price {
+      color: #38bdf8;
+      font-size: 23px;
+      font-weight: bold;
+      margin: 12px 0;
+    }
+
+    .buy {
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      color: white;
+      border: none;
+      padding: 12px 22px;
+      border-radius: 12px;
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .buy:hover {
+      transform: scale(1.05);
+    }
+
+    .info {
+      background: #020617;
+      padding: 20px;
+      border-radius: 18px;
+      color: #cbd5e1;
+      line-height: 1.7;
+      margin-top: 20px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      color: #94a3b8;
+      background: #020617;
+      margin-top: 30px;
+    }
+
+    .hidden {
+      display: none;
     }
   </style>
 </head>
+
 <body>
 
 <header>
   <h1>Kansah Games</h1>
-  <p>Topup Game Murah, Cepat & Aman</p>
+  <p>Topup Game Murah, Cepat, Aman & Terpercaya</p>
+  <a class="wa-btn" href="https://wa.me/6281262409473">Chat Admin WhatsApp</a>
 </header>
 
 <div class="container">
-  <div class="grid">
 
+  <div class="trust">
+    <div class="trust-box">⚡ Proses Cepat</div>
+    <div class="trust-box">🔐 Aman & Terpercaya</div>
+    <div class="trust-box">📲 Order via WhatsApp</div>
+    <div class="trust-box">🎮 Support Banyak Game</div>
+  </div>
+
+  <h2 class="section-title">Daftar Produk</h2>
+
+  <div class="tabs">
+    <button class="active" onclick="showGame('mlbb', this)">MLBB</button>
+    <button onclick="showGame('ff', this)">Free Fire</button>
+    <button onclick="showGame('pubg', this)">PUBG</button>
+  </div>
+
+  <div id="mlbb" class="grid product-list">
     <div class="card">
-      <h2>MLBB Diamond</h2>
+      <h3>MLBB Diamond</h3>
       <p>86 Diamond</p>
       <div class="price">Rp20.000</div>
-      <button onclick="order('MLBB 86 Diamond','20000')">Beli Sekarang</button>
+      <button class="buy" onclick="order('MLBB 86 Diamond','20000')">Beli Sekarang</button>
     </div>
 
     <div class="card">
-      <h2>MLBB Diamond</h2>
+      <h3>MLBB Diamond</h3>
       <p>172 Diamond</p>
       <div class="price">Rp40.000</div>
-      <button onclick="order('MLBB 172 Diamond','40000')">Beli Sekarang</button>
+      <button class="buy" onclick="order('MLBB 172 Diamond','40000')">Beli Sekarang</button>
     </div>
 
     <div class="card">
-      <h2>Free Fire</h2>
+      <h3>MLBB Diamond</h3>
+      <p>257 Diamond</p>
+      <div class="price">Rp60.000</div>
+      <button class="buy" onclick="order('MLBB 257 Diamond','60000')">Beli Sekarang</button>
+    </div>
+  </div>
+
+  <div id="ff" class="grid product-list hidden">
+    <div class="card">
+      <h3>Free Fire</h3>
       <p>70 Diamond</p>
       <div class="price">Rp10.000</div>
-      <button onclick="order('Free Fire 70 Diamond','10000')">Beli Sekarang</button>
+      <button class="buy" onclick="order('Free Fire 70 Diamond','10000')">Beli Sekarang</button>
     </div>
 
     <div class="card">
-      <h2>PUBG Mobile</h2>
-      <p>60 UC</p>
-      <div class="price">Rp15.000</div>
-      <button onclick="order('PUBG Mobile 60 UC','15000')">Beli Sekarang</button>
+      <h3>Free Fire</h3>
+      <p>140 Diamond</p>
+      <div class="price">Rp20.000</div>
+      <button class="buy" onclick="order('Free Fire 140 Diamond','20000')">Beli Sekarang</button>
     </div>
 
+    <div class="card">
+      <h3>Free Fire</h3>
+      <p>355 Diamond</p>
+      <div class="price">Rp50.000</div>
+      <button class="buy" onclick="order('Free Fire 355 Diamond','50000')">Beli Sekarang</button>
+    </div>
   </div>
 
-  <div class="note">
-    <b>Cara Order:</b><br>
-    Pilih produk → isi ID game/server → lanjut WhatsApp → admin proses pesanan.
+  <div id="pubg" class="grid product-list hidden">
+    <div class="card">
+      <h3>PUBG Mobile</h3>
+      <p>60 UC</p>
+      <div class="price">Rp15.000</div>
+      <button class="buy" onclick="order('PUBG Mobile 60 UC','15000')">Beli Sekarang</button>
+    </div>
+
+    <div class="card">
+      <h3>PUBG Mobile</h3>
+      <p>325 UC</p>
+      <div class="price">Rp75.000</div>
+      <button class="buy" onclick="order('PUBG Mobile 325 UC','75000')">Beli Sekarang</button>
+    </div>
+
+    <div class="card">
+      <h3>PUBG Mobile</h3>
+      <p>660 UC</p>
+      <div class="price">Rp150.000</div>
+      <button class="buy" onclick="order('PUBG Mobile 660 UC','150000')">Beli Sekarang</button>
+    </div>
   </div>
+
+  <h2 class="section-title">Cara Order</h2>
+  <div class="info">
+    1. Pilih produk yang ingin dibeli.<br>
+    2. Masukkan ID game dan server/zona jika diperlukan.<br>
+    3. Kamu akan diarahkan ke WhatsApp admin.<br>
+    4. Admin akan cek dan memproses pesanan kamu.<br>
+    5. Simpan bukti pembayaran sampai pesanan selesai.
+  </div>
+
+  <h2 class="section-title">Catatan Penting</h2>
+  <div class="info">
+    Pastikan ID game benar sebelum order. Kesalahan input ID atau server menjadi tanggung jawab pembeli.
+    Untuk pesanan besar atau produk yang belum ada di daftar, silakan chat admin terlebih dahulu.
+  </div>
+
 </div>
 
 <footer>
-  © 2026 Kansah Games • Topup Aman & Terpercaya
+  © 2026 Kansah Games • Topup Game Aman & Terpercaya
 </footer>
 
 <script>
-function order(nama, harga){
-  let id = prompt("Masukkan ID Game:");
-  if(!id) return;
+  function showGame(gameId, btn) {
+    let lists = document.querySelectorAll('.product-list');
+    lists.forEach(list => list.classList.add('hidden'));
 
-  let server = prompt("Masukkan Server / Zona jika ada:");
-  if(server === null) return;
+    document.getElementById(gameId).classList.remove('hidden');
 
-  let pesan =
+    let buttons = document.querySelectorAll('.tabs button');
+    buttons.forEach(button => button.classList.remove('active'));
+    btn.classList.add('active');
+  }
+
+  function order(nama, harga) {
+    let id = prompt("Masukkan ID Game:");
+    if (!id) return;
+
+    let server = prompt("Masukkan Server / Zona jika ada:");
+    if (server === null) return;
+
+    let pesan =
 `Halo Admin Kansah Games, saya mau order:
 
 Produk: ${nama}
@@ -127,11 +311,11 @@ Harga: Rp${harga}
 ID Game: ${id}
 Server/Zona: ${server}
 
-Mohon diproses ya.`;
+Mohon dicek dan diproses ya.`;
 
-  let wa = "https://wa.me/6281262409473?text=" + encodeURIComponent(pesan);
-  window.location.href = wa;
-}
+    let wa = "https://wa.me/6281262409473?text=" + encodeURIComponent(pesan);
+    window.location.href = wa;
+  }
 </script>
 
 </body>
