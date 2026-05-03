@@ -13,90 +13,152 @@ body {
   color:white;
 }
 
+/* HEADER */
 header {
   text-align:center;
-  padding:30px;
+  padding:40px 20px;
   background:linear-gradient(135deg,#020617,#1e3a8a);
 }
-
-header h1 {font-size:40px;margin:0;}
+header h1 {margin:0;font-size:42px;}
 header p {color:#cbd5e1;}
 
-.container {
+/* BANNER */
+.banner {
+  margin:20px;
+  background:#1e293b;
   padding:20px;
-  max-width:1000px;
-  margin:auto;
+  border-radius:15px;
+  text-align:center;
+}
+.banner b {
+  color:#22c55e;
+  font-size:18px;
 }
 
+/* CONTAINER */
+.container {
+  max-width:1100px;
+  margin:auto;
+  padding:20px;
+}
+
+/* INPUT */
 .input-box {
   background:#1e293b;
   padding:15px;
   border-radius:15px;
   margin-bottom:20px;
 }
-
-.input-box input {
-  width:100%;
+.row {
+  display:flex;
+  gap:10px;
+}
+.row input {
+  flex:1;
   padding:10px;
-  margin:5px 0;
   border:none;
   border-radius:10px;
 }
 
+/* TABS */
+.tabs {
+  text-align:center;
+  margin-bottom:15px;
+}
+.tabs button {
+  margin:5px;
+  padding:10px 15px;
+  border:none;
+  border-radius:10px;
+  background:#334155;
+  color:white;
+}
+.active {
+  background:#2563eb !important;
+}
+
+/* GRID */
 .grid {
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
   gap:15px;
 }
 
+/* CARD */
 .card {
   background:#1e293b;
   padding:20px;
   border-radius:15px;
   text-align:center;
-  transition:0.3s;
+  position:relative;
 }
-
 .card:hover {
   transform:translateY(-5px);
 }
 
+/* BADGE */
+.badge {
+  position:absolute;
+  top:10px;
+  left:10px;
+  background:#22c55e;
+  padding:3px 8px;
+  border-radius:8px;
+  font-size:12px;
+}
+
+/* PRICE */
 .price {
   color:#38bdf8;
   font-weight:bold;
   margin:10px 0;
 }
 
-button {
+/* BUTTON */
+button.buy {
   background:#22c55e;
   border:none;
   padding:10px 20px;
   border-radius:10px;
   color:white;
   font-weight:bold;
-  cursor:pointer;
 }
 
-button:hover {
-  transform:scale(1.05);
+/* SECTION */
+.section {
+  margin-top:25px;
+  background:#020617;
+  padding:15px;
+  border-radius:12px;
+  color:#cbd5e1;
 }
 
-.tabs {
+/* TESTI */
+.testi {
+  background:#1e293b;
+  padding:10px;
+  border-radius:10px;
+  margin-top:10px;
+}
+
+/* FLOAT WA */
+.wa-float {
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#22c55e;
+  color:white;
+  padding:15px;
+  border-radius:50%;
+  font-size:20px;
+}
+
+.hidden {display:none;}
+
+footer {
   text-align:center;
-  margin-bottom:15px;
-}
-
-.tabs button {
-  margin:5px;
-  background:#334155;
-}
-
-.active {
-  background:#2563eb !important;
-}
-
-.hidden {
-  display:none;
+  padding:20px;
+  color:#94a3b8;
 }
 </style>
 </head>
@@ -105,83 +167,89 @@ button:hover {
 
 <header>
   <h1>Kansah Games</h1>
-  <p>Topup Murah & Cepat</p>
+  <p>Topup Cepat & Aman</p>
 </header>
+
+<div class="banner">
+🔥 <b>Harga Termurah Se-Indonesia</b> 🔥
+</div>
 
 <div class="container">
 
 <div class="input-box">
   <b>Masukkan Data Game</b>
-  <input id="id" placeholder="Masukkan ID Game">
-  <input id="server" placeholder="Server (opsional)">
+  <div class="row">
+    <input id="id" placeholder="ID Game">
+    <input id="server" placeholder="Server">
+  </div>
 </div>
 
 <div class="tabs">
   <button class="active" onclick="show('ml',this)">MLBB</button>
   <button onclick="show('ff',this)">Free Fire</button>
   <button onclick="show('pubg',this)">PUBG</button>
+  <button onclick="show('mc',this)">Magic Chess</button>
 </div>
 
 <!-- ML -->
 <div id="ml" class="grid">
-  <div class="card">
-    86 Diamond
-    <div class="price">Rp20.000</div>
-    <button onclick="order('MLBB 86 Diamond','20000')">Beli</button>
-  </div>
-
-  <div class="card">
-    172 Diamond
-    <div class="price">Rp40.000</div>
-    <button onclick="order('MLBB 172 Diamond','40000')">Beli</button>
-  </div>
+<div class="card"><div class="badge">Best Seller</div>86 DM<div class="price">Rp20.000</div><button class="buy" onclick="order('MLBB 86','20000')">Beli</button></div>
+<div class="card">172 DM<div class="price">Rp40.000</div><button class="buy" onclick="order('MLBB 172','40000')">Beli</button></div>
 </div>
 
 <!-- FF -->
 <div id="ff" class="grid hidden">
-  <div class="card">
-    70 Diamond
-    <div class="price">Rp10.000</div>
-    <button onclick="order('Free Fire 70 Diamond','10000')">Beli</button>
-  </div>
-
-  <div class="card">
-    140 Diamond
-    <div class="price">Rp20.000</div>
-    <button onclick="order('Free Fire 140 Diamond','20000')">Beli</button>
-  </div>
+<div class="card">70 DM<div class="price">Rp10.000</div><button class="buy" onclick="order('FF 70','10000')">Beli</button></div>
 </div>
 
 <!-- PUBG -->
 <div id="pubg" class="grid hidden">
-  <div class="card">
-    60 UC
-    <div class="price">Rp15.000</div>
-    <button onclick="order('PUBG 60 UC','15000')">Beli</button>
-  </div>
+<div class="card">60 UC<div class="price">Rp15.000</div><button class="buy" onclick="order('PUBG 60','15000')">Beli</button></div>
+</div>
+
+<!-- MC -->
+<div id="mc" class="grid hidden">
+<div class="card">50 DM<div class="price">Rp10.000</div><button class="buy" onclick="order('MC 50','10000')">Beli</button></div>
+</div>
+
+<div class="section">
+✔ Proses cepat 1-5 menit<br>
+✔ Aman & terpercaya<br>
+✔ Support WhatsApp
+</div>
+
+<div class="section">
+<b>Testimoni</b>
+<div class="testi">"Topup cepat banget, mantap!" ⭐⭐⭐⭐⭐</div>
 </div>
 
 </div>
+
+<a class="wa-float" href="https://wa.me/601162456609">💬</a>
+
+<footer>
+© 2026 Kansah Games
+</footer>
 
 <script>
 function show(id,btn){
-  document.querySelectorAll('.grid').forEach(e=>e.classList.add('hidden'));
-  document.getElementById(id).classList.remove('hidden');
+document.querySelectorAll('.grid').forEach(e=>e.classList.add('hidden'));
+document.getElementById(id).classList.remove('hidden');
 
-  document.querySelectorAll('.tabs button').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
+document.querySelectorAll('.tabs button').forEach(b=>b.classList.remove('active'));
+btn.classList.add('active');
 }
 
 function order(nama,harga){
-  let id=document.getElementById('id').value;
-  let server=document.getElementById('server').value;
+let id=document.getElementById('id').value;
+let server=document.getElementById('server').value;
 
-  if(!id){
-    alert('Isi ID dulu bro 😅');
-    return;
-  }
+if(!id){
+alert('Isi ID dulu bro 😅');
+return;
+}
 
-  let pesan=`Halo Admin Kansah Games,
+let pesan=`Halo Admin Kansah Games,
 Saya mau order:
 
 Produk: ${nama}
@@ -189,7 +257,7 @@ Harga: Rp${harga}
 ID: ${id}
 Server: ${server}`;
 
-  window.location.href="https://wa.me/6281262409473?text="+encodeURIComponent(pesan);
+window.location.href="https://wa.me/601162456609?text="+encodeURIComponent(pesan);
 }
 </script>
 
