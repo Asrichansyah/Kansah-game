@@ -1,321 +1,196 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kansah Games - Topup Game Murah</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kansah Games</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
+<style>
+body {
+  margin:0;
+  font-family:Arial;
+  background:#0f172a;
+  color:white;
+}
 
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #0f172a;
-      color: white;
-    }
+header {
+  text-align:center;
+  padding:30px;
+  background:linear-gradient(135deg,#020617,#1e3a8a);
+}
 
-    header {
-      padding: 35px 18px;
-      text-align: center;
-      background: linear-gradient(135deg, #020617, #1e3a8a);
-    }
+header h1 {font-size:40px;margin:0;}
+header p {color:#cbd5e1;}
 
-    header h1 {
-      font-size: 42px;
-      margin: 0;
-    }
+.container {
+  padding:20px;
+  max-width:1000px;
+  margin:auto;
+}
 
-    header p {
-      color: #cbd5e1;
-      font-size: 18px;
-    }
+.input-box {
+  background:#1e293b;
+  padding:15px;
+  border-radius:15px;
+  margin-bottom:20px;
+}
 
-    .wa-btn {
-      display: inline-block;
-      margin-top: 12px;
-      background: #22c55e;
-      color: white;
-      padding: 12px 22px;
-      border-radius: 12px;
-      text-decoration: none;
-      font-weight: bold;
-    }
+.input-box input {
+  width:100%;
+  padding:10px;
+  margin:5px 0;
+  border:none;
+  border-radius:10px;
+}
 
-    .container {
-      max-width: 1100px;
-      margin: auto;
-      padding: 22px;
-    }
+.grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:15px;
+}
 
-    .section-title {
-      font-size: 26px;
-      margin: 30px 0 16px;
-      text-align: center;
-    }
+.card {
+  background:#1e293b;
+  padding:20px;
+  border-radius:15px;
+  text-align:center;
+  transition:0.3s;
+}
 
-    .trust {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 14px;
-      margin-top: 20px;
-    }
+.card:hover {
+  transform:translateY(-5px);
+}
 
-    .trust-box {
-      background: #1e293b;
-      padding: 16px;
-      border-radius: 16px;
-      text-align: center;
-      color: #cbd5e1;
-    }
+.price {
+  color:#38bdf8;
+  font-weight:bold;
+  margin:10px 0;
+}
 
-    .tabs {
-      display: flex;
-      gap: 10px;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin: 20px 0;
-    }
+button {
+  background:#22c55e;
+  border:none;
+  padding:10px 20px;
+  border-radius:10px;
+  color:white;
+  font-weight:bold;
+  cursor:pointer;
+}
 
-    .tabs button {
-      background: #1e293b;
-      color: white;
-      border: 1px solid #334155;
-      padding: 10px 16px;
-      border-radius: 999px;
-      cursor: pointer;
-      font-weight: bold;
-    }
+button:hover {
+  transform:scale(1.05);
+}
 
-    .tabs button.active {
-      background: #2563eb;
-    }
+.tabs {
+  text-align:center;
+  margin-bottom:15px;
+}
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 18px;
-    }
+.tabs button {
+  margin:5px;
+  background:#334155;
+}
 
-    .card {
-      background: #1e293b;
-      padding: 22px;
-      border-radius: 18px;
-      text-align: center;
-      box-shadow: 0 8px 20px rgba(0,0,0,.25);
-      transition: 0.3s;
-    }
+.active {
+  background:#2563eb !important;
+}
 
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 25px rgba(0,0,0,.4);
-    }
-
-    .card h3 {
-      margin: 0 0 8px;
-      font-size: 22px;
-    }
-
-    .card p {
-      color: #cbd5e1;
-    }
-
-    .price {
-      color: #38bdf8;
-      font-size: 23px;
-      font-weight: bold;
-      margin: 12px 0;
-    }
-
-    .buy {
-      background: linear-gradient(135deg, #22c55e, #16a34a);
-      color: white;
-      border: none;
-      padding: 12px 22px;
-      border-radius: 12px;
-      font-weight: bold;
-      font-size: 16px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    .buy:hover {
-      transform: scale(1.05);
-    }
-
-    .info {
-      background: #020617;
-      padding: 20px;
-      border-radius: 18px;
-      color: #cbd5e1;
-      line-height: 1.7;
-      margin-top: 20px;
-    }
-
-    footer {
-      text-align: center;
-      padding: 25px;
-      color: #94a3b8;
-      background: #020617;
-      margin-top: 30px;
-    }
-
-    .hidden {
-      display: none;
-    }
-  </style>
+.hidden {
+  display:none;
+}
+</style>
 </head>
 
 <body>
 
 <header>
   <h1>Kansah Games</h1>
-  <p>Topup Game Murah, Cepat, Aman & Terpercaya</p>
-  <a class="wa-btn" href="https://wa.me/6281262409473">Chat Admin WhatsApp</a>
+  <p>Topup Murah & Cepat</p>
 </header>
 
 <div class="container">
 
-  <div class="trust">
-    <div class="trust-box">⚡ Proses Cepat</div>
-    <div class="trust-box">🔐 Aman & Terpercaya</div>
-    <div class="trust-box">📲 Order via WhatsApp</div>
-    <div class="trust-box">🎮 Support Banyak Game</div>
+<div class="input-box">
+  <b>Masukkan Data Game</b>
+  <input id="id" placeholder="Masukkan ID Game">
+  <input id="server" placeholder="Server (opsional)">
+</div>
+
+<div class="tabs">
+  <button class="active" onclick="show('ml',this)">MLBB</button>
+  <button onclick="show('ff',this)">Free Fire</button>
+  <button onclick="show('pubg',this)">PUBG</button>
+</div>
+
+<!-- ML -->
+<div id="ml" class="grid">
+  <div class="card">
+    86 Diamond
+    <div class="price">Rp20.000</div>
+    <button onclick="order('MLBB 86 Diamond','20000')">Beli</button>
   </div>
 
-  <h2 class="section-title">Daftar Produk</h2>
+  <div class="card">
+    172 Diamond
+    <div class="price">Rp40.000</div>
+    <button onclick="order('MLBB 172 Diamond','40000')">Beli</button>
+  </div>
+</div>
 
-  <div class="tabs">
-    <button class="active" onclick="showGame('mlbb', this)">MLBB</button>
-    <button onclick="showGame('ff', this)">Free Fire</button>
-    <button onclick="showGame('pubg', this)">PUBG</button>
+<!-- FF -->
+<div id="ff" class="grid hidden">
+  <div class="card">
+    70 Diamond
+    <div class="price">Rp10.000</div>
+    <button onclick="order('Free Fire 70 Diamond','10000')">Beli</button>
   </div>
 
-  <div id="mlbb" class="grid product-list">
-    <div class="card">
-      <h3>MLBB Diamond</h3>
-      <p>86 Diamond</p>
-      <div class="price">Rp20.000</div>
-      <button class="buy" onclick="order('MLBB 86 Diamond','20000')">Beli Sekarang</button>
-    </div>
-
-    <div class="card">
-      <h3>MLBB Diamond</h3>
-      <p>172 Diamond</p>
-      <div class="price">Rp40.000</div>
-      <button class="buy" onclick="order('MLBB 172 Diamond','40000')">Beli Sekarang</button>
-    </div>
-
-    <div class="card">
-      <h3>MLBB Diamond</h3>
-      <p>257 Diamond</p>
-      <div class="price">Rp60.000</div>
-      <button class="buy" onclick="order('MLBB 257 Diamond','60000')">Beli Sekarang</button>
-    </div>
+  <div class="card">
+    140 Diamond
+    <div class="price">Rp20.000</div>
+    <button onclick="order('Free Fire 140 Diamond','20000')">Beli</button>
   </div>
+</div>
 
-  <div id="ff" class="grid product-list hidden">
-    <div class="card">
-      <h3>Free Fire</h3>
-      <p>70 Diamond</p>
-      <div class="price">Rp10.000</div>
-      <button class="buy" onclick="order('Free Fire 70 Diamond','10000')">Beli Sekarang</button>
-    </div>
-
-    <div class="card">
-      <h3>Free Fire</h3>
-      <p>140 Diamond</p>
-      <div class="price">Rp20.000</div>
-      <button class="buy" onclick="order('Free Fire 140 Diamond','20000')">Beli Sekarang</button>
-    </div>
-
-    <div class="card">
-      <h3>Free Fire</h3>
-      <p>355 Diamond</p>
-      <div class="price">Rp50.000</div>
-      <button class="buy" onclick="order('Free Fire 355 Diamond','50000')">Beli Sekarang</button>
-    </div>
+<!-- PUBG -->
+<div id="pubg" class="grid hidden">
+  <div class="card">
+    60 UC
+    <div class="price">Rp15.000</div>
+    <button onclick="order('PUBG 60 UC','15000')">Beli</button>
   </div>
-
-  <div id="pubg" class="grid product-list hidden">
-    <div class="card">
-      <h3>PUBG Mobile</h3>
-      <p>60 UC</p>
-      <div class="price">Rp15.000</div>
-      <button class="buy" onclick="order('PUBG Mobile 60 UC','15000')">Beli Sekarang</button>
-    </div>
-
-    <div class="card">
-      <h3>PUBG Mobile</h3>
-      <p>325 UC</p>
-      <div class="price">Rp75.000</div>
-      <button class="buy" onclick="order('PUBG Mobile 325 UC','75000')">Beli Sekarang</button>
-    </div>
-
-    <div class="card">
-      <h3>PUBG Mobile</h3>
-      <p>660 UC</p>
-      <div class="price">Rp150.000</div>
-      <button class="buy" onclick="order('PUBG Mobile 660 UC','150000')">Beli Sekarang</button>
-    </div>
-  </div>
-
-  <h2 class="section-title">Cara Order</h2>
-  <div class="info">
-    1. Pilih produk yang ingin dibeli.<br>
-    2. Masukkan ID game dan server/zona jika diperlukan.<br>
-    3. Kamu akan diarahkan ke WhatsApp admin.<br>
-    4. Admin akan cek dan memproses pesanan kamu.<br>
-    5. Simpan bukti pembayaran sampai pesanan selesai.
-  </div>
-
-  <h2 class="section-title">Catatan Penting</h2>
-  <div class="info">
-    Pastikan ID game benar sebelum order. Kesalahan input ID atau server menjadi tanggung jawab pembeli.
-    Untuk pesanan besar atau produk yang belum ada di daftar, silakan chat admin terlebih dahulu.
-  </div>
+</div>
 
 </div>
 
-<footer>
-  © 2026 Kansah Games • Topup Game Aman & Terpercaya
-</footer>
-
 <script>
-  function showGame(gameId, btn) {
-    let lists = document.querySelectorAll('.product-list');
-    lists.forEach(list => list.classList.add('hidden'));
+function show(id,btn){
+  document.querySelectorAll('.grid').forEach(e=>e.classList.add('hidden'));
+  document.getElementById(id).classList.remove('hidden');
 
-    document.getElementById(gameId).classList.remove('hidden');
+  document.querySelectorAll('.tabs button').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+}
 
-    let buttons = document.querySelectorAll('.tabs button');
-    buttons.forEach(button => button.classList.remove('active'));
-    btn.classList.add('active');
+function order(nama,harga){
+  let id=document.getElementById('id').value;
+  let server=document.getElementById('server').value;
+
+  if(!id){
+    alert('Isi ID dulu bro 😅');
+    return;
   }
 
-  function order(nama, harga) {
-    let id = prompt("Masukkan ID Game:");
-    if (!id) return;
-
-    let server = prompt("Masukkan Server / Zona jika ada:");
-    if (server === null) return;
-
-    let pesan =
-`Halo Admin Kansah Games, saya mau order:
+  let pesan=`Halo Admin Kansah Games,
+Saya mau order:
 
 Produk: ${nama}
 Harga: Rp${harga}
-ID Game: ${id}
-Server/Zona: ${server}
+ID: ${id}
+Server: ${server}`;
 
-Mohon dicek dan diproses ya.`;
-
-    let wa = "https://wa.me/6281262409473?text=" + encodeURIComponent(pesan);
-    window.location.href = wa;
-  }
+  window.location.href="https://wa.me/6281262409473?text="+encodeURIComponent(pesan);
+}
 </script>
 
 </body>
